@@ -39,7 +39,9 @@ class CustomDataset(Dataset):
 
     def __getitem__(self, index):
         row = self.data.iloc[index]
+
         sentence_list = row['발화']
+        sentence_list = eval(sentence_list)
 
         sentence = self.make_data(sentence_list)
 
