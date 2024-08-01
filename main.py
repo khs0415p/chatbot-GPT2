@@ -19,9 +19,13 @@ def load_config(config_path):
 
 
 def main(args):    
-    config = load_config(args.config)
     if (args.continuous and not args.checkpoint) or (args.mode == "test" and not args.checkpoint):
         raise ValueError("Not Found - checkpoint path")
+    
+    if args.mode == 'train':
+        config = load_config(args.config)
+    else:
+        config = load_config(os.path.join(args.checkpoint, 'config.yaml'))
 
     config.checkpoint = args.checkpoint
     config.continuous = args.continuous

@@ -11,7 +11,7 @@ class GPT2(nn.Module):
         self.config = self.model.config
 
 
-    def forward(self, input_ids, attention_mask, labels=None):
+    def forward(self, input_ids, attention_mask=None, labels=None):
         output = self.model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
         return output
     
