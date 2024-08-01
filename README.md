@@ -54,7 +54,7 @@ python main.py --config config/config.yaml
 
 ### Test
 ```
-python main.py --config config/config.yaml --mode test --checkpoint <checkpoint folder>
+python main.py --mode test --checkpoint <checkpoint folder>
 ```
 
 #### Test samples
@@ -64,6 +64,10 @@ python main.py --config config/config.yaml --mode test --checkpoint <checkpoint 
 
 ### Loss History
 
-<img src="assets/result.png" >
+<img src="assets/loss.png" >
+
+### BLEU Score History
+
+<img src="assets/bleu.png" >
 
 
