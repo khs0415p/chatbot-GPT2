@@ -281,17 +281,18 @@ class BaseTrainer:
 
                 model_inputs['input_ids'] = model_inputs['input_ids'].detach().cpu()
                 logits = torch.argmax(logits.detach().cpu(), dim=-1)
-
-                epoch_bleu2_score += get_bleu_score(model_inputs['input_ids'], logits, self.tokenizer, 2)
-                epoch_bleu4_score += get_bleu_score(model_inputs['input_ids'], logits, self.tokenizer, 4)
+                bleu2_score = get_bleu_score(model_inputs['input_ids'], logits, self.tokenizer, 2)
+                bleu4_score = get_bleu_score(model_inputs['input_ids'], logits, self.tokenizer, 4)
+                epoch_bleu2_score += bleu2_score
+                epoch_bleu4_score += bleu4_score
 
                 if i % self.config.log_step == 0:
                     LOGGER.info(f"{'Epoch':<25}{str(epoch + 1)}")
                     LOGGER.info(f"{'Step':<25}{str(step)}")
                     LOGGER.info(f"{'Phase':<25}Validation")
                     LOGGER.info(f"{'Loss':<25}{str(loss)}")
-                    LOGGER.info(f"{'BLEU-(2)':<25}{epoch_bleu2_score:.4f}")
-                    LOGGER.info(f"{'BLEU-(4)':<25}{epoch_bleu4_score:.4f}")
+                    LOGGER.info(f"{'BLEU-(2)':<25}{bleu2_score:.4f}")
+                    LOGGER.info(f"{'BLEU-(4)':<25}{bleu4_score:.4f}")
                     self.valid_loss_history.append([step, loss])
 
             epoch_loss += loss * batch_size
