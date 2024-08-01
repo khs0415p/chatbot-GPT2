@@ -1,4 +1,4 @@
-# Sentiment Analysis with BERT
+# Multi-turn ChatBot using GPT2
 
 GPT 논문에 대한 설명은 [블로그](https://velog.io/@khs0415p/paper-GPT-1)를 참고하시기 바랍니다.  
 GPT2는 GPT1에 비해 더 많은 데이터로 학습하고 context size가 1024로 증가했습니다. 또한, 더 많은 layer를 쌓았으며 layer normalization의 위치가 변경되었습니다.
