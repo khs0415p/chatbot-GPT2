@@ -58,7 +58,16 @@ python main.py --mode test --checkpoint <checkpoint folder>
 ```
 
 #### Test samples
+
+**1 Epoch**  
+
 <img src="assets/test.png" >
+
+<br>
+
+**5 Epoch**  
+
+<img src="assets/test2.png" >
 
 ## Results
 
