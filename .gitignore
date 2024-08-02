@@ -168,9 +168,6 @@ results/
 # log folder
 logs/
 
-# data
-data/
-
 # notebook
 /*.ipynb
 
