@@ -333,6 +333,8 @@ class BaseTrainer:
         loss: float = None,
         step: int = None,
     ):
+        make_dir(base_path)
+
         # Save model & training state
         torch.save(self.model.state_dict(), f'{base_path}/pytorch_model.bin')
         torch.save(self.optimizer.state_dict(), f'{base_path}/optimizer.pt')
@@ -377,7 +379,6 @@ class BaseTrainer:
         cur_time = time.strftime("%m-%d")
         base_path = self.save_path.format(cur_time, step, self.config.save_strategy)
         base_path = self.last_save_path.format(cur_time) if last_save else base_path
-        make_dir(base_path)
 
         if last_save:
             self._save_checkpoint(
@@ -402,6 +403,9 @@ class BaseTrainer:
             heapq.heappush(self.saved_path, (-loss, base_path))
 
             self.best_val_loss = loss
+
+        else:
+            return
 
 
     def _save_learning_rate(self):
